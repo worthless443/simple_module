@@ -18,7 +18,7 @@ Projects using `add_module_library`:
 
 ## Example
 
-`hello.cc`:
+`cat hello.cc`:
 ```c++
 module;
 
@@ -29,23 +29,23 @@ export module hello;
 export void hello() { std::printf("Hello, modules!\n"); }
 ```
 
-`main.cc`:
+`cat main.cc`:
 ```c++
 import hello;
 
 int main() { hello(); }
 ```
 
-`CMakeLists.txt`:
+`cat CMakeLists.txt`:
 ```cmake
 cmake_minimum_required(VERSION 3.11)
 project(HELLO CXX)
 
-include(modules.cmake)
+include(simple_module.cmake)
 
-add_module_library(hello hello.cc)
+add_module_library(hello example/hello.cc)
 
-add_executable(main main.cc)
+add_executable(main example/main.cc)
 target_link_libraries(main hello)
 ```
 
